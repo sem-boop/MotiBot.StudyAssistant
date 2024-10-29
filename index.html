@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotiBot - מערכת ניהול למידה חכמה</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: #f5f7fa;
+        }
+        
+        .task-item:hover .delete-task {
+            opacity: 1;
+        }
+        
+        .delete-task {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .active-nav-item {
+            background-color: #e3f2fd;
+            color: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+    <!-- סרגל ניווט -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-robot text-blue-600 text-2xl ml-2"></i>
+                    <h1 class="text-xl font-bold">MotiBot</h1>
+                </div>
+                <div class="flex space-x-4">
+                    <button onclick="switchView('tasks')" class="active-nav-item px-3 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-tasks ml-1"></i>משימות
+                    </button>
+                    <button onclick="switchView('timer')" class="px-3 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-clock ml-1"></i>טיימר
+                    </button>
+                    <button onclick="switchView('stats')" class="px-3 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-chart-line ml-1"></i>סטטיסטיקות
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- תוכן ראשי -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- סטטיסטיקות מהירות -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-2xl font-bold text-green-600" id="completed-count">0</div>
+                <div class="text-gray-600">משימות שהושלמו</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-2xl font-bold text-blue-600" id="pending-count">0</div>
+                <div class="text-gray-600">משימות פעילות</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-2xl font-bold text-purple-600" id="streak-count">0</div>
+                <div class="text-gray-600">רצף יומי</div>
+            </div>
+        </div>
+
+        <!-- אזור תוכן דינמי -->
+        <div id="dynamic-content">
+            <!-- התוכן יוחלף דינמית על ידי JavaScript -->
+        </div>
+
+        <!-- טיפ יומי -->
+        <div class="bg-purple-50 rounded-lg p-4 mt-8">
+            <div class="flex items-center">
+                <i class="fas fa-lightbulb text-purple-600 ml-2"></i>
+                <h3 class="font-medium text-purple-900">טיפ יומי</h3>
+            </div>
+            <p class="mt-2 text-purple-800" id="daily-tip">טוען טיפ...</p>
+        </div>
+    </main>
+
+    <!-- קישור לקבצי JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/timer.js"></script>
+</body>
+</html>
